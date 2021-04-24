@@ -5,7 +5,7 @@ load_dotenv()
 
 
 class Client(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, autoincrement=True)
     Name = models.CharField("Nome", max_length=100)
     RG = models.IntegerField()
     cpf = models.IntegerField()
@@ -24,7 +24,7 @@ class Email(models.Model):
 
 
 class Telephone(models.Model):
-    id = models.AutoField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True, autoincrement=True)
     Client = models.ForeignKey(Client, on_delete=models.CASCADE)
     ddd = models.IntegerField()
     number = models.IntegerField()
