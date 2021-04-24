@@ -4,9 +4,9 @@ load_dotenv()
 
 
 class Client(models.Model):
-    name = models.CharField("Nome", max_length=100)
-    rg = models.IntegerField(null=False)
-    cpf = models.IntegerField(null=False)
+    name = models.CharField("Nome", max_length=100, null=False)
+    rg = models.CharField(max_length=11, null=False)
+    cpf = models.CharField(max_length=11, null=False)
     birth_date = models.DateField(auto_now=False, auto_now_add=False)
     gender = models.CharField(max_length=30, choices=[
         ("Male", "Masculino"),
@@ -22,8 +22,8 @@ class Email(models.Model):
 
 class Telephone(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    ddd = models.IntegerField(max_length=3)
-    number = models.IntegerField(max_length=9)
+    ddd = models.CharField(max_length=3)
+    number = models.CharField(max_length=9)
     number_type = models.CharField(max_length=30, choices=[
         ("cellphone", "Celular"),
         ("home_phone", "Residêncial"),
