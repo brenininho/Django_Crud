@@ -1,13 +1,26 @@
 from django.db import models
 
 
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+class Client(models.Model):
+    id = models.AutoField(primary_key=True)
+    Name = models.CharField("Nome", max_length=100)
+    RG = models.IntegerField()
+    cpf = models.IntegerField()
+    birth_date = models.DateField(auto_now=False, auto_now_add=False)
+    gender = models.CharField(max_length=3, choices=[
+        ("Male", "Masculino"),
+        ("Female", "Feminino"),
+        ("Others", "outros"),
+    ])
 
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-
+class Telephone(models.Model):
+    id = models.AutoField(primary_key=True)
+    Client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    ddd = models.IntegerField()
+    number = models.IntegerField()
+    number_type = models.CharField(max_length=3, choices=[
+        ("Cellphone", "Celular"),
+        ("Home_Phone", "Residêncial"),
+        ("commercial telephone", "Comercial"),
+    ])
