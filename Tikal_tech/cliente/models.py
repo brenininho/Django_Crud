@@ -1,5 +1,7 @@
 from django.db import models
 from dotenv import load_dotenv
+import datetime
+
 load_dotenv()
 
 
@@ -16,6 +18,11 @@ class Client(models.Model):
         ("Female", "Feminino"),
         ("Others", "outros"),
     ])
+
+    def client_age(self):
+        days = datetime.datetime.today().date() - self.birth_date
+        age = days / 365
+        return
 
 
 class Email(models.Model):
