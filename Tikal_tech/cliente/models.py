@@ -4,6 +4,9 @@ load_dotenv()
 
 
 class Client(models.Model):
+    def __str__(self):
+        return self.name, self.cpf, self.gender
+
     name = models.CharField("Nome", max_length=100, null=False)
     rg = models.CharField(max_length=11, null=False)
     cpf = models.CharField(max_length=11, null=False)
@@ -16,6 +19,8 @@ class Client(models.Model):
 
 
 class Email(models.Model):
+    def __str__(self):
+        return self.email
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     email = models.EmailField(max_length=254)
 
