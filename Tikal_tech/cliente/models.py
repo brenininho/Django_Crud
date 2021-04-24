@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Client(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, autoincrement=True)
     Name = models.CharField("Nome", max_length=100)
     RG = models.IntegerField()
     cpf = models.IntegerField()
@@ -15,7 +15,7 @@ class Client(models.Model):
 
 
 class Telephone(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, autoincrement=True)
     Client = models.ForeignKey(Client, on_delete=models.CASCADE)
     ddd = models.IntegerField()
     number = models.IntegerField()
