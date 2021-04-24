@@ -29,3 +29,7 @@ class Telephone(models.Model):
         ("home_phone", "Residêncial"),
         ("commercial_telephone", "Comercial"),
     ])
+
+    def __str__(self):
+        return f'{self.ddd}, {self.number}, {self.number_type}'
+
