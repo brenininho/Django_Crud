@@ -5,14 +5,14 @@
     <title>Criando cliente</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="{% url 'cliente:cliente_novo'  %}" method="post">
     <h2>Clientes</h2>
     {% csrf_token %}
-    {{ form_cliente }}
+    {{ form_client }}
   <input type="hidden" name="form" value="cliente">
     <input type="submit" value="Enviar">
 </form>
-<form action="" method="post">
+<form action="{% url 'cliente:cliente_novo'  %}" method="post">
     <h2>Email</h2>
     {% csrf_token %}
     {{ form_email }}
