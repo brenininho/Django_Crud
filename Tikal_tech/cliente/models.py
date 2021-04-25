@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from dotenv import load_dotenv
 import datetime
@@ -19,10 +20,14 @@ class Client(models.Model):
         ("outros", "outros"),
     ])
 
+    @admin.display(
+        boolean=False,
+        ordering='birth_date',
+        description='age'
+    )
     def client_age(self):
-        days = datetime.datetime.today().date() - self.birth_date
-        age = days / 365
-        return
+        timedelta = datetime.datetime.today().date() - self.birth_date
+        return timedelta.days / 365
 
 
 class Email(models.Model):

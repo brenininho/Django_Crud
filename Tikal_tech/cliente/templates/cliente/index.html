@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cliente/style.css' %}">
 </head>
 <body>
+
 {{ data }}
 {% if context_object_name %}
-    <ul>
+<ul>
     {% for clients in context_object_name %}
-        <li><a href="{% url 'cliente:detail' clients.id %}">{{ clients.name }}</a></li>
+    <li><a href="{% url 'cliente:detail' clients.id %}">{{ clients.name }}</a></li>
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No cliente are available.</p>
+<p>No cliente are available.</p>
 {% endif %}
 </body>
 </html>
