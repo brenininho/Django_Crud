@@ -10,21 +10,21 @@
     {% csrf_token %}
     {{ form_cliente }}
   <input type="hidden" name="form" value="cliente">
-    <input type="submit">
+    <input type="submit" value="Enviar">
 </form>
 <form action="" method="post">
     <h2>Clientes</h2>
     {% csrf_token %}
     {{ form_email }}
     <input type="hidden" name="form" value="email">
-    <input type="submit">
+    <input type="submit" value="Enviar">
 </form>
 <form action="" method="post">
     <h2>Clientes</h2>
     {% csrf_token %}
     {{ form_telephone }}
     <input type="hidden" name="form" value="telephone">
-    <input type="submit">
+    <input type="submit" value="Enviar">
 </form>
 </body>
 </html>
