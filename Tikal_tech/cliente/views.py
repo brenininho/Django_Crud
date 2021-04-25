@@ -23,14 +23,18 @@ def cliente(request):
         form_client = ClientForm(request.POST)
         form_email = EmailForm(request.POST)
         form_telephone = TelephoneForm(request.POST)
-        if form_client == cliente:
-            pass
-        if form_email == email:
-            pass
-        if form_telephone == telephone:
-            pass
-        if form_client.is_valid():
-            form_client.save()
+
+        if form_client == "cliente":
+            if form_client.is_valid():
+                form_client.save()
+
+        if form_email == "email":
+            if form_email.is_valid():
+                form_email.save()
+
+        if form_telephone == "telephone":
+            if form_telephone.is_valid():
+                form_telephone.save()
 
     context = {'form': form_client}
     return render(request, 'cliente/cliente.html', context)
