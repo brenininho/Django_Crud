@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
-
+{{ data }}
+{% if context_object_name %}
+    <ul>
+    {% for clients in context_object_name %}
+        <li><a href="{% url 'cliente:detail' clients.id %}">{{ clients.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No cliente are available.</p>
+{% endif %}
 </body>
 </html>

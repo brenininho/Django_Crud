@@ -14,9 +14,9 @@ class Client(models.Model):
     cpf = models.CharField(max_length=11, null=False)
     birth_date = models.DateField(auto_now=False, auto_now_add=False)
     gender = models.CharField(max_length=30, choices=[
-        ("Male", "Masculino"),
-        ("Female", "Feminino"),
-        ("Others", "outros"),
+        ("Masculino", "Masculino"),
+        ("Feminino", "Feminino"),
+        ("outros", "outros"),
     ])
 
     def client_age(self):
@@ -27,21 +27,23 @@ class Client(models.Model):
 
 class Email(models.Model):
     def __str__(self):
-        return self.email
+        return f'{self.email}'
+
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     email = models.EmailField(max_length=254)
 
 
 class Telephone(models.Model):
+    def __str__(self):
+        return f'{self.number}, {self.ddd}, {self.number_type}'
+
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     ddd = models.CharField(max_length=3)
     number = models.CharField(max_length=9)
     number_type = models.CharField(max_length=30, choices=[
-        ("cellphone", "Celular"),
-        ("home_phone", "Residêncial"),
-        ("commercial_telephone", "Comercial"),
+        ("Celular", "Celular"),
+        ("Residêncial", "Residêncial"),
+        ("Comercial", "Comercial"),
     ])
 
-    def __str__(self):
-        return f'{self.ddd}, {self.number}, {self.number_type}'
 

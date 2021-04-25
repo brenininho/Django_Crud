@@ -1,20 +1,16 @@
-from django.http import HttpResponse
 from .models import Client
-from .models import Email
-from .models import Telephone
+from django.views import generic
 
 
-def index(request):
-    latest_client_list = Client.objects.order_by('-birth_date')
-    print(latest_client_list[0].client_age())
-    # output = ', '.join([q.question_text for q in latest_client_list])
-    return HttpResponse("Hello, world. You're at the client index.")
+class IndexView(generic.ListView):
+    template_name = 'cliente/index.html'
+    context_object_name = 'data'
+
+    def get_queryset(self):
+        return Client.objects.order_by('-birth_date')
 
 
-def detail(request, cliente_id):
-    return HttpResponse("You're looking at client %s." % cliente_id)
+class DetailView(generic.DetailView):
+    model = Client
+    template_name = 'cliente/detail.html'
 
-
-def results(request, cliente_id):
-    response = "You're looking at the results of client %s."
-    return HttpResponse(response % cliente_id)
