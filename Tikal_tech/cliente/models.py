@@ -27,7 +27,7 @@ class Client(models.Model):
     )
     def client_age(self):
         timedelta = datetime.datetime.today().date() - self.birth_date
-        return timedelta.days / 365
+        return int(timedelta.days / 365)
 
 
 class Email(models.Model):
