@@ -1,5 +1,5 @@
 # Django_Crud
 
-./manage.py migrate
-sudo apt-get install -y python3-dev python3-setuptools
-sudo apt-get install -y libpq-dev build-essential binutils g++
+Para subir o projeto  mude o arquivo ".env.sample" para ".env" e coloque seus dados do banco de dados 
+Agora para subir o projeto execute "docker-compose up"
+Se desejar parar o projeto execute "docker-compose down"
